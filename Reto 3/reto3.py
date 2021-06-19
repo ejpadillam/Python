@@ -1,6 +1,8 @@
 # Se Solicitan los datos al usuario:
+
 num_lect = int(input())     # Numero de datos a Ingresar
 cont = 0                    # Contador limite
+
 cont_SuA = 0    #Contador Sumamente APTO
 cont_MoA = 0    #Contador Moderadamente APTO
 cont_MarA = 0   #Contador Marginalmente APTO
@@ -22,14 +24,14 @@ while cont < num_lect:
     # for i in altura.split(", "):  # La funcion split toma ese ingreso y lo convierte en una lista, con los datos separados por espacio, dicha lista es asignada a la variable "i" del for.
     #    datos_altura = int(i)   # Se convierte la lista en datos enteros y se asigna a la variable datos_altura
         
-    long_Alt = len(altura)      # Se lee la longitud de la lista en la variable "altura" y se asigna el dato numerico a la varible "long_list"
+    long_Alt = len(altura)      # Se lee la longitud de la lista en la variable "altura" y se asigna el dato numerico a la varible "long_Alt"
         
     # for j in profund.split(", "):
     #    datos_profund = int(j)
 
-    long_Prof = len(profund)
+    long_Prof = len(profund)    # Se lee la longitud de la lista en la variable "profund" y se asigna el dato numerico a la varible "long_Prof"
 
-    SUM_Alt = sum(List_Str_Int(altura)) # Tomo la variable altura que posee una lista en Str, la paso por la funcion para convertida en lista de Int, sumo los datos con la funcion Sum() y el resultado se lo asigno a la variable SUM_Alt..........
+    SUM_Alt = sum(List_Str_Int(altura)) # Se toma la variable altura que posee una lista en Str, se pasa por la funcion, para convertirla en lista de Int, sumo los datos con la funcion Sum() y el resultado se le asigna a la variable SUM_Alt..........
     SUM_Prof = sum(List_Str_Int(profund)) 
     
     Prom_Alt = SUM_Alt / long_Alt         # Promedio de la Altura del Vector

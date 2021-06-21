@@ -1,6 +1,6 @@
 # Se Solicitan los datos al usuario:
 
-num_lect = int(input())     # Numero de datos a Ingresar
+num_lect = int(input("Digite cantidad de datos a Ingresar: "))     # Numero de datos a Ingresar
 cont = 0                    # Contador limite
 
 cont_SuA = 0    #Contador Sumamente APTO
@@ -18,8 +18,8 @@ def List_Str_Int(lista):            # Funcion para convertir una lista con datos
 
 while cont < num_lect:
 
-    altura = input().split(" ")        # Solicitud e ingreso de datos de altura, ingresa como texto en una lista
-    profund = input().split(" ")  # Solicitud e ingreso de datos de profuncidad, ingresa como texto en una lista
+    altura = input("Ingrese Altura: ").split(" ")        # Solicitud e ingreso de datos de altura, ingresa como texto en una lista
+    profund = input("Ingrese Profundidad: ").split(" ")  # Solicitud e ingreso de datos de profuncidad, ingresa como texto en una lista
     
     # for i in altura.split(", "):  # La funcion split toma ese ingreso y lo convierte en una lista, con los datos separados por espacio, dicha lista es asignada a la variable "i" del for.
     #    datos_altura = int(i)   # Se convierte la lista en datos enteros y se asigna a la variable datos_altura

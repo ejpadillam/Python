@@ -15,7 +15,7 @@ MatrizAlt = []              # Matriz acumuladora para listas de entrada - Altura
 MatrizProf = []             # Matriz acumuladora para listas de entrada - Profundidad
 
 MatrizComp = []             # Matriz de comparacion
-MatrizComp.append([])
+
 ListaConteo = []            # Lista utilizada temporalmente para añadir las categorias de cada comparacion numerica, para posteriormente, añadir esta lista a la Matriz de Comparacion.
 
 Lista_Salida_Altura = []    # Definicion lista final  -  Posible Borrar
@@ -25,11 +25,11 @@ def List_Str_Int(lista):            # Funcion para convertir una lista con datos
     b= [int(x) for x in lista]
     return b
 
-def CreaLista(num_lect):
+"""def CreaLista(num_lect):
     L = []
-    for i in range(k+1):
+    for i in range(0+1):
         L.append(0)
-    return L
+    return L"""
     
 
 def comparar_categoria(Altura, Profund):
@@ -107,37 +107,34 @@ for ingrFilas in range(num_lect):
     MatrizProf.append(List_Str_Int(input("Ingrese datos de Profundidades: ").split(" ")))
 
 
-for val1, val2, i in zip(MatrizAlt, MatrizProf, MatrizComp):
-    MatrizComp.append([])
-    i = 1
-    for j in range(7):
-        #print(val1[0], val2[0])
-        MatrizComp[i][j].append(comparar_categoria(val1[0], val2[0]))
-        #print(val1[1], val2[1])
-        MatrizComp[i][j].append(comparar_categoria(val1[1], val2[1]))
-        #print(val1[2], val2[2])
-        MatrizComp[i][j].append(comparar_categoria(val1[2], val2[2]))
-        #print(val1[3], val2[3])
-        MatrizComp[i][j].append(comparar_categoria(val1[3], val2[3]))
-        #print(val1[4], val2[4])
-        MatrizComp[i][j].append(comparar_categoria(val1[4], val2[4]))
-        #print(val1[5], val2[5])
-        MatrizComp[i][j].append(comparar_categoria(val1[5], val2[5]))
-        #print(val1[6], val2[6])
-        MatrizComp[i][j].append(comparar_categoria(val1[6], val2[6]))
-        j += 1
+i = 0  # Contador de filas, de la matriz de comparacion (Infinito - numero de zonas ingresadas)
+for val1, val2 in zip(MatrizAlt, MatrizProf): # Se recorren las filas de ambas matrices de entrada (Al mismo tiempo) (Infinito - numero de zonas ingresadas)
+    MatrizComp.append(['0', '1', '2', '3', '4', '5', '6'])  # Se añade una fila a la matriz para que cuente con los indices de fila y columna.
+    for j in range (7):                                     # Se recorre cada columna de 0 a 6 (el 7 no se cuenta)
+        MatrizComp[i][j] = comparar_categoria(val1[j], val2[j])
+    i += 1
 
 print(MatrizComp)
+
+
+"""     
+        #print(val1[0], val2[0])
+        MatrizComp.insert([i][j], comparar_categoria(val1[0], val2[0]))
+        #print(val1[1], val2[1])
+        MatrizComp.insert([i][1], comparar_categoria(val1[1], val2[1]))
+        #print(val1[2], val2[2])
+        MatrizComp.insert([i][2], comparar_categoria(val1[2], val2[2]))
+        #print(val1[3], val2[3])
+        MatrizComp.insert([i][3], comparar_categoria(val1[3], val2[3]))
+        #print(val1[4], val2[4])
+        MatrizComp.insert([i][4], comparar_categoria(val1[4], val2[4]))
+        #print(val1[5], val2[5])
+        MatrizComp.insert([i][5], comparar_categoria(val1[5], val2[5]))
+        #print(val1[6], val2[6])
+        MatrizComp.insert([i][6], comparar_categoria(val1[6], val2[6]))
+
+        """
     
-
-
-
-
-print(" ")
-#print(MatrizComp)
-
-
-
 
 """
 

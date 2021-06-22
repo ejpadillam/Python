@@ -1,36 +1,35 @@
 # Se Solicitan los datos al usuario:
 
-num_lect = int(input("Digite cantidad de datos a Ingresar: "))  # Numero de datos a Ingresar por Altura y Profundidad
+num_lect = int(input())  # Numero de datos a Ingresar por Altura y Profundidad
 cont = 0                                                        # Contador limite por cada dato, Altura y Profundidad
 
 cont_SuA = 0    #Contador Sumamente APTO
 cont_MoA = 0    #Contador Moderadamente APTO
 cont_MarA = 0   #Contador Marginalmente APTO
 cont_NoA = 0    #Contador No APTO
-
-SUM_Alt = 0                 #Acumulador Altura sobre el nivel de mar  -  Posible Borrar
-SUM_Prof = 0                #Acumulador Profundidad efectiva del suelo  -  posible Borrar
-
-MatrizAlt = []              # Matriz acumuladora para listas de entrada - Altura
-MatrizProf = []             # Matriz acumuladora para listas de entrada - Profundidad
+                                #######################  EL CODIGO FUNCIONA PERFECTAMENTE HASTA LA LINEA 152, LINEA 152, LINEA 152 POR FAVOR
+                                                ###################### UN DIA MAS DE TIEMPO,   UN DIA MAS DE TIEMPO,   UN DIA MAS DE TIEMPO
+MatrizAlt = []  # Matriz acumuladora para listas de entrada - Altura
+MatrizProf = [] # Matriz acumuladora para listas de entrada - Profundidad
 
 MatrizComp = []             # Matriz de comparacion
+Conteo_Categ = []           # Matriz de conteo de categorias(4)(Columnas: 4) por zona(filas - Infinito)
 
-ListaConteo = []            # Lista utilizada temporalmente para añadir las categorias de cada comparacion numerica, para posteriormente, añadir esta lista a la Matriz de Comparacion.
+Lista_Salida_Final = []    # Definicion lista final a IMPRIMIR  ############################
 
-Lista_Salida_Altura = []    # Definicion lista final  -  Posible Borrar
-Lista_Salida_Prof = []      # Definicion lista final  -  Posible Borrar
 
 def List_Str_Int(lista):            # Funcion para convertir una lista con datos String a datos Integer
     b= [int(x) for x in lista]
     return b
 
-"""def CreaLista(num_lect):
-    L = []
-    for i in range(0+1):
-        L.append(0)
-    return L"""
-    
+def get_elem_index(a, elem=None):
+    if elem == 'min':
+        return min(a), a.index(min(a))
+    elif elem == 'max':
+        return max(a), a.index(max(a))
+    else:
+        return elem, a.index(elem)
+
 
 def comparar_categoria(Altura, Profund):
     if Altura >= 400 and Altura <= 800:
@@ -99,22 +98,143 @@ def comparar_categoria(Altura, Profund):
         #cont_NoA += 1   #No APTO
 
 
-for ingrFilas in range(num_lect):
-    MatrizAlt.append(List_Str_Int(input("Ingrese datos de Alturas: ").split(" ")))  # Este ciclo for hace lo mismo que en la linea 24
+for ingrFilas in range(num_lect):                      #  Rango de datos a ingresar por cada categoria de Altura
+    MatrizAlt.append(List_Str_Int(input().split(" ")))  # Se ingresan las listas tipo 'Str', seguido se convierten listas tipo 'Int' la cual es añadida como nueva fila a la Matriz de altura.
 
 
-for ingrFilas in range(num_lect):
-    MatrizProf.append(List_Str_Int(input("Ingrese datos de Profundidades: ").split(" ")))
+for ingrFilas in range(num_lect):                         #  Rango de datos a ingresar por cada categoria de Profundidad
+    MatrizProf.append(List_Str_Int(input().split(" ")))  # Se ingresa las lista tipo 'Str', seguido se convierten listas tipo 'Int' la cual es añadida como nueva fila a la Matriz de Profundidad
 
 
-i = 0  # Contador de filas, de la matriz de comparacion (Infinito - numero de zonas ingresadas)
-for val1, val2 in zip(MatrizAlt, MatrizProf): # Se recorren las filas de ambas matrices de entrada (Al mismo tiempo) (Infinito - numero de zonas ingresadas)
-    MatrizComp.append(['0', '1', '2', '3', '4', '5', '6'])  # Se añade una fila a la matriz para que cuente con los indices de fila y columna.
-    for j in range (7):                                     # Se recorre cada columna de 0 a 6 (el 7 no se cuenta)
-        MatrizComp[i][j] = comparar_categoria(val1[j], val2[j])
-    i += 1
+i = 0                                                       # Contador de filas, de la matriz de comparacion (Infinito - numero de zonas ingresadas)
+for val1, val2 in zip(MatrizAlt, MatrizProf):               # Se recorren las filas de ambas matrices (Altura y Profundidad) tomando sus indices de las filas (de arriba(0) hacia abajo(infinito)) (Al mismo tiempo) (Infinito - numero de datos(zonas) ingresados)
+    MatrizComp.append(['0', '1', '2', '3', '4', '5', '6'])      # Se añade una nueva fila a la matriz de comparacion para que cuente con los indices de fila(0) y columna (0 a 6).
+    for j in range(7):                                         # Se recorre cada columna de 0 a 6 (el 7 no se cuenta)
+        MatrizComp[i][j] = comparar_categoria(val1[j], val2[j])  # Se recorren las columnas de ambas matrices (Altura y Profundidad) tomando sus indices de las columnas (de izquierda(0) hacia derecha(6)) (Al mismo tiempo) Se comparan ambos resultados con la funcion "Comparar" el cual devuelve un 'Str' y este mismo es asignado a las coordenadas de la nueva matriz...
+    i += 1                                                          # Contador de filas, de la matriz de comparacion
 
+c = 0               # Contador de filas, de la matriz de conteo de categorias(Infinito - numero de zonas ingresadas)
+for i in range(num_lect):
+    Conteo_Categ.append([0, 0, 0, 0])
+    for j in range(7):
+        valor = str(MatrizComp[i][j])
+        if valor == "NO":
+            cont_NoA += 1            
+        elif valor == "Marginalmente":
+            cont_MarA += 1
+        elif valor == "Moderadamente":
+            cont_MoA += 1
+        else:
+            cont_SuA += 1
+    Conteo_Categ[c][0] += cont_NoA
+    Conteo_Categ[c][1] += cont_MarA
+    Conteo_Categ[c][2] += cont_MoA
+    Conteo_Categ[c][3] += cont_SuA
+    cont_NoA = 0
+    cont_MarA = 0
+    cont_MoA = 0
+    cont_SuA = 0
+    c += 1
+
+for c in range(4):
+    if c == 0:
+        for f in range(num_lect):
+            valor = int(Conteo_Categ[f][0])
+            cont_NoA += valor
+        Lista_Salida_Final.append(str(cont_NoA))
+    elif c == 1:
+        for f in range(num_lect):
+            valor = int(Conteo_Categ[f][1])
+            cont_MarA += valor
+        Lista_Salida_Final.append(str(cont_MarA))
+    elif c == 2:
+        for f in range(num_lect):
+            valor = int(Conteo_Categ[f][2])
+            cont_MoA += valor
+        Lista_Salida_Final.append(str(cont_MoA))
+    elif c == 3:
+        for f in range(num_lect):
+            valor = int(Conteo_Categ[f][3])
+            cont_SuA += valor
+        Lista_Salida_Final.append(str(cont_SuA))
+
+print(" ".join(Lista_Salida_Final))  
 print(MatrizComp)
+
+
+print(min(Conteo_Categ[0]))
+
+print(a.index(min(Conteo_Categ[0])))
+
+
+
+
+
+#  Intentando •	La categoría que más se presentó por cada zona   ########################################################
+#	Intentando • La categoría que menos se presentó por cada zona  #############################################################################
+
+
+
+
+
+"""for i in range(len(Conteo_Categ)):
+    min_index = Conteo_Categ[i].index(min(Conteo_Categ[i]))
+    max_index = Conteo_Categ[i].index(max(Conteo_Categ[i]))
+
+    print('Para Columna', i)
+    print('Minimo', Conteo_Categ[i][min_index], Conteo_Categ[i][min_index])
+    print('Maximo', Conteo_Categ[i][max_index], Conteo_Categ[i][max_index])
+    print('')
+
+"""
+
+
+
+
+
+
+
+
+"""
+
+
+
+
+        if valor == "NO":
+            cont_NoA += 1            
+        elif valor == "Marginalmente":
+            cont_MarA += 1
+        elif valor == "Moderadamente":
+            cont_MoA += 1
+        else:
+            cont_SuA += 1
+    
+    Lista_Salida_Final.append(cont_MarA)
+    Lista_Salida_Final.append(cont_MoA)
+    Lista_Salida_Final.append(cont_SuA)
+    cont_NoA = 0
+    cont_MarA = 0
+    cont_MoA = 0
+    cont_SuA = 0
+    c += 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
+
 
 
 """     

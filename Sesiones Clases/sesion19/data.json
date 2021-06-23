@@ -1,0 +1,19 @@
+{
+"clients": [ 
+    {"First name": "Sigrid",
+    "Last name": "Mannock",
+    "Age": 27,
+    "Amount": 7.17
+    },
+    {"First name": "Joe",
+    "Last name": "Hinners",
+    "Age": 31,
+    "Amount": [1.9, 5.5]
+    },
+    {"First name": "Theodoric",
+    "Last name": "Rivers",
+    "Age": 36,
+    "Amount": 1.11
+    } 
+    ]
+}

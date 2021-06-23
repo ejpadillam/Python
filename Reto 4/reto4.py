@@ -7,28 +7,45 @@ cont_SuA = 0    #Contador Sumamente APTO
 cont_MoA = 0    #Contador Moderadamente APTO
 cont_MarA = 0   #Contador Marginalmente APTO
 cont_NoA = 0    #Contador No APTO
-                                #######################  EL CODIGO FUNCIONA PERFECTAMENTE HASTA LA LINEA 152, LINEA 152, LINEA 152 POR FAVOR
-                                                ###################### UN DIA MAS DE TIEMPO,   UN DIA MAS DE TIEMPO,   UN DIA MAS DE TIEMPO
-MatrizAlt = []  # Matriz acumuladora para listas de entrada - Altura
-MatrizProf = [] # Matriz acumuladora para listas de entrada - Profundidad
 
-MatrizComp = []             # Matriz de comparacion
-Conteo_Categ = []           # Matriz de conteo de categorias(4)(Columnas: 4) por zona(filas - Infinito)
+MatrizAlt = []          # Matriz acumuladora para listas de entrada - Altura
+MatrizProf = []         # Matriz acumuladora para listas de entrada - Profundidad
 
-Lista_Salida_Final = []    # Definicion lista final a IMPRIMIR  ############################
+MatrizComp = []             # Matriz de comparacion - De categorias
+Conteo_Categ = []           # Matriz de conteo de (4) categorias (Columnas: 4) por zona (filas - Infinito)
+
+Lista_Salida_Final1 = []    # Definicion lista final a IMPRIMIR  ############################
+Lista_Salida_Final2 = []    # Definicion lista final a IMPRIMIR  ############################
 
 
-def List_Str_Int(lista):            # Funcion para convertir una lista con datos String a datos Integer
+def List_Str_Int(lista):            # Funcion para convertir una lista, con datos String a datos Integer
     b= [int(x) for x in lista]
     return b
 
-def get_elem_index(a, elem=None):
-    if elem == 'min':
-        return min(a), a.index(min(a))
-    elif elem == 'max':
-        return max(a), a.index(max(a))
-    else:
-        return elem, a.index(elem)
+def CatMasPresent(list):                    # Funcion para sacar el numero mayor de una lista y su respectivo indice. (index)
+    for i in list:
+        l = i
+        v = max(l)
+        ind = i.index(v)
+        if ind == 0:
+            print("El indice del numero mayor en la lista es: ", ind)
+            print("Categoria no apto")
+        elif ind == 1:
+            print("El indice del numero mayor en la lista es: ", ind)
+            print("Categoria marginalmente alto")
+        elif ind == 2:
+            print("El indice del numero mayor en la lista es: ", ind)
+            print("Categoria moderadamente alto")
+        elif ind == 3:
+            print("El indice del numero mayor en la lista es: ", ind)
+            print("Categoria moderadamente alto")
+
+
+
+        
+"""        if i > mayor:
+            mayor = i
+    return mayor"""
 
 
 def comparar_categoria(Altura, Profund):
@@ -97,6 +114,8 @@ def comparar_categoria(Altura, Profund):
         return "NO"
         #cont_NoA += 1   #No APTO
 
+##################################################################################################################################
+# FASE 1 - Ingreso de listas y guardadas en dos matrices distintas
 
 for ingrFilas in range(num_lect):                      #  Rango de datos a ingresar por cada categoria de Altura
     MatrizAlt.append(List_Str_Int(input().split(" ")))  # Se ingresan las listas tipo 'Str', seguido se convierten listas tipo 'Int' la cual es añadida como nueva fila a la Matriz de altura.
@@ -105,6 +124,8 @@ for ingrFilas in range(num_lect):                      #  Rango de datos a ingre
 for ingrFilas in range(num_lect):                         #  Rango de datos a ingresar por cada categoria de Profundidad
     MatrizProf.append(List_Str_Int(input().split(" ")))  # Se ingresa las lista tipo 'Str', seguido se convierten listas tipo 'Int' la cual es añadida como nueva fila a la Matriz de Profundidad
 
+#################################################################################################################################
+# FASE 2 y 3 = (fase 2: Comparacion de categorias y escoger la peor) - (fase 3: Guardar el resultado de la comparacion en una nueva matriz.)
 
 i = 0                                                       # Contador de filas, de la matriz de comparacion (Infinito - numero de zonas ingresadas)
 for val1, val2 in zip(MatrizAlt, MatrizProf):               # Se recorren las filas de ambas matrices (Altura y Profundidad) tomando sus indices de las filas (de arriba(0) hacia abajo(infinito)) (Al mismo tiempo) (Infinito - numero de datos(zonas) ingresados)
@@ -112,6 +133,9 @@ for val1, val2 in zip(MatrizAlt, MatrizProf):               # Se recorren las fi
     for j in range(7):                                         # Se recorre cada columna de 0 a 6 (el 7 no se cuenta)
         MatrizComp[i][j] = comparar_categoria(val1[j], val2[j])  # Se recorren las columnas de ambas matrices (Altura y Profundidad) tomando sus indices de las columnas (de izquierda(0) hacia derecha(6)) (Al mismo tiempo) Se comparan ambos resultados con la funcion "Comparar" el cual devuelve un 'Str' y este mismo es asignado a las coordenadas de la nueva matriz...
     i += 1                                                          # Contador de filas, de la matriz de comparacion
+
+########################################################################################################################
+# FASE 4 y 5 = (fase 4: Contar las categorias por zona (filas - Infinito)) - (fase 5: El conteo resultante asignarlo a una nueva matriz por zona (filas - infinito))
 
 c = 0               # Contador de filas, de la matriz de conteo de categorias(Infinito - numero de zonas ingresadas)
 for i in range(num_lect):
@@ -136,35 +160,45 @@ for i in range(num_lect):
     cont_SuA = 0
     c += 1
 
+##########################################################################################################
+# Fase 6 y 7 = (fase 6: Se hace conteo de las categorias (por columnas) sin importar las zonas) - (fase 7: El resultado del conteo de las categorias, se asigna a la lista de impresion final)
+
 for c in range(4):
     if c == 0:
         for f in range(num_lect):
             valor = int(Conteo_Categ[f][0])
             cont_NoA += valor
-        Lista_Salida_Final.append(str(cont_NoA))
+        Lista_Salida_Final1.append(str(cont_NoA))
     elif c == 1:
         for f in range(num_lect):
             valor = int(Conteo_Categ[f][1])
             cont_MarA += valor
-        Lista_Salida_Final.append(str(cont_MarA))
+        Lista_Salida_Final1.append(str(cont_MarA))
     elif c == 2:
         for f in range(num_lect):
             valor = int(Conteo_Categ[f][2])
             cont_MoA += valor
-        Lista_Salida_Final.append(str(cont_MoA))
+        Lista_Salida_Final1.append(str(cont_MoA))
     elif c == 3:
         for f in range(num_lect):
             valor = int(Conteo_Categ[f][3])
             cont_SuA += valor
-        Lista_Salida_Final.append(str(cont_SuA))
+        Lista_Salida_Final1.append(str(cont_SuA))
 
-print(" ".join(Lista_Salida_Final))  
+print(" ".join(Lista_Salida_Final1))  
 print(MatrizComp)
 
 
-print(min(Conteo_Categ[0]))
+#########################################################################################################################
+# Fase 8 = Escoger la categoria que mas se presentó o contó en cada zona
 
-print(a.index(min(Conteo_Categ[0])))
+for f in Conteo_Categ:
+    CatMasPresent(f)
+    print(" ")
+
+
+
+
 
 
 

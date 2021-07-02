@@ -69,7 +69,7 @@ print(MatrizComp[1])
 """
 
 ############### Reemplazar, actualizar o cambiar los datos de las filas en una Matriz - Array - Arreglo  
-
+"""
 b = [           # Matriz b
     [22,56,33], # Indice: Fila: 0, Columnas: 0, 1, 2
     [21,58,33], # Indice: Fila: 1, Columnas: 0, 1, 2
@@ -84,37 +84,60 @@ for i in range(0, 3):      # Recorre las filas 0, 1, 2
         else:
             b[i][j] = 1
 
-print(b)         #  Se imprime la matriz actualizada.
+print(b)         #  Se imprime la matriz actualizada."""
 
 
-########## De una matriz, de cada lista, sacar su numero mayor y su indice.  ######################
+########## De una matriz, de cada lista, sacar su numero MAYOR y su indice.  ######################
 
-Matriz = [[1, 13, 4], [9, 7, 8], [9, 10, 100]]
+Matriz = [[1, 13, 4], [12, 16, 6], [9, 10, 100]]  # Se varian los datos para comprobar el codigo
 print(Matriz)
-Max = max(Matriz[0])
-print(type(Max))
-Matriz[0].index(Max)
-ind = Matriz[0].index(Max)
-print(ind)
-print(Max)
-
-print(" ")
+Max = max(Matriz[1])        # Numero mayor de la fila 1, de la matriz
+print(type(Max))            # Se imprime el tipo de dato de ese numero mayor
+ind = Matriz[1].index(Max)  # Se saca el indice del numero mayor de la fila 1 de la matriz
+print("El numero mayor de la fila 1 de la matriz es:", Max, " y su indice es: ", ind)
 
 print(" ")
 
 
-###   Funcion para obtener el/los indice de valores 
+########## De una matriz, de cada lista, sacar su numero MENOR y su indice.  ######################
 
-def iterated_index(list_of_elems, element):
+Matriz = [[1, 13, 4], [1, 1, 1], [9, 10, 100]]  # Se varian los datos para comprobar el codigo
+print(Matriz)
+Min = min(Matriz[1])        # Numero menor de la fila 1, de la matriz
+print(type(Min))            # Se imprime el tipo de dato de ese numero menor
+ind = Matriz[1].index(Min)  # Se saca el indice del numero mayor de la fila 1 de la matriz
+print("El numero menor de la fila 1 de la matriz es:", Min, " y su indice es: ", ind)
+
+print(" ")
+
+#------------------- OTRA OPCION ----------------------------
+
+numMenor = 0
+
+for i in Matriz[0]:
+    if numMenor > i:
+        numMenor = i
+print(numMenor)
+
+
+
+
+############   Funcion para obtener el/los indices de valores indicados  #######
+
+def iterated_index(lista, valor):
     iterated_index_list = []
-    for i in range(len(list_of_elems)):
-        if list_of_elems[i] == element:
+    for i in range(len(lista)):
+        if lista[i] == valor:
             iterated_index_list.append(i)
     return iterated_index_list
 
 consonants = ['b', 'f', 'g', 'h', 'j', 'k','g']
 iterated_index_list = iterated_index(consonants, 'g')
 print('Indexes of all occurrences of a "g" in the list are : ', iterated_index_list)
+
+##############################################################################################
+
+
 
 
 

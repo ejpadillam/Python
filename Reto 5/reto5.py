@@ -24,17 +24,14 @@ def mean(data):
     return sum(data) / len(data)  # Aqui debes dividir entre la cantidad de elementos del vector data
     
 
-
 def std(data):
     mean = sum(data) / len(data)  # Aqui debes dividir entre la cantidad de elementos del vector data
     return sqrt((sum(list(map(lambda x: (x - mean) ** 2, data)))) / (len(data) - 1))
-
 
 def main():
     data = read_file("data.csv")  # Aqui debes colocar el nombre del archivo csv que contiene los datos
     ids = list(set(list(map(lambda x: int(x), input().split(' ')))))
     ids.sort()
-    
 
     area_old = 4800 # Aqui debes asignar el valor del rango de las antenas previamente instaladas
     
@@ -85,8 +82,6 @@ def main():
         print('c {:}'.format(acum_type_ant['c']))  # Aqui debes mostrar la informacion que hay en acum_type_ant en la posicion 'c'
         print('d {:}'.format(acum_type_ant['d']))
         print('e {:}'.format(acum_type_ant['e']))  # Aqui debes mostrar la informacion que hay en acum_type_ant en la posicion 'e'
-
-
 
 if __name__ == "__main__":
     main()

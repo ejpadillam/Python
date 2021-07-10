@@ -1,0 +1,10 @@
+ndicador = (i for i, m in enumerate(lista) if m == valor_alto)
+
+[0:34 a. m., 18/6/2021] +57 310 3752977: El menor valor se halla de una manera similar, si usan listas para almacenar las cantidades por categoría por zona.
+[0:37 a. m., 18/6/2021] +57 310 3752977: Valor_menor = min(k for k in lista if k > 0)
+
+Así descartan el cero como el menor valor posible de la lista.
+
+La variable almacena el menor valor dentro de la lista.
+
+Reutilizan la otra fórmula para hallar la posición del menor valor dentro de la lista, e interpretan esa posición como una categoría.

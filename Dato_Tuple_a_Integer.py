@@ -44,8 +44,6 @@ print("Tipo de dato resultante: ", type(res))
 print(" ")
 
 
-
-
 arreglo = [3,6,8,1,2,0,7,2,9]
 i = 0
 impar = 0
@@ -66,7 +64,6 @@ z = 2
 a = 6
 b = 4
 c = 1
-
 
 
 x = x + y   #beta

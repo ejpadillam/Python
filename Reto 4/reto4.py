@@ -1,7 +1,7 @@
 # Se Solicitan los datos al usuario:
 
 num_lect = int(input("Digite el numero de datos a ingresar: "))  # Numero de datos a Ingresar por Altura y Profundidad
-cont = 0                                                        # Contador limite por cada dato, Altura y Profundidad
+cont = 0                                                         # Contador limite por cada dato, Altura y Profundidad
 
 ###############################  DEFINICION DE VARIALES, LISTAS Y MATRICES  ###########################
 
@@ -19,10 +19,10 @@ Conteo_Categ = []           # Matriz de conteo de (4) categorias (Columnas: 4) p
 Lista_Salida_Final1 = []    # Definicion lista final a IMPRIMIR  
 Lista_Salida_Final2 = []    # Definicion lista final a IMPRIMIR  
 
-#########################    Funcion para convertir una lista, con datos String a datos Integer   ###########
+#########################    Funcion para convertir una lista con datos String a una lista con datos Integer   ###########
 
 def List_Str_Int(lista):         
-    b= [int(x) for x in lista]
+    b = [int(x) for x in lista]
     return b
 
 ##################### Funcion para obtener el numero MAYOR de una lista y su respectivo INDICE. ##########################
@@ -87,8 +87,8 @@ def CatMenosPresent(lista):
             else:
                 Cat = "no apto"
             return Cat
-            #print("El indice del numero mayor en la lista es: ", ind)
-            #print("Su valor maximo es: ", may)
+            #print("El indice del numero menor en la lista es: ", ind)
+            #print("Su valor minimo es: ", Min)
             #print("Categoria no apto")
         elif ind == 1 and lista[1] > 0:
             if lista[1] == lista[2]:

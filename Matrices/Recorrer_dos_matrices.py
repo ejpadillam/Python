@@ -10,10 +10,9 @@ for tupla in zip(matriz_1, matriz_2):
 
 ###############################################################################################################################
 
-"""for i in range (0, 3):  # Recorre cada fila
-    for j in range (0, 3): # Recorre cada elemente de esa fila (Columna)
-        print(matriz[i][j], end=', ') # Imprime valor de la fila, y sus elementos internos"""
-
+for i in range (0, 3):  # Recorre cada fila
+    for j in range (0, 3): # Recorre cada columna
+        print(matriz_1[i][j], end=', ') # Imprime valor de la fila, y sus elementos internos
 
 print(" ")
 

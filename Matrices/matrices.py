@@ -87,7 +87,7 @@ for i in range(0, 3):      # Recorre las filas 0, 1, 2
 print(b)         #  Se imprime la matriz actualizada."""
 
 
-########## De una matriz, de cada lista, sacar su numero MAYOR y su indice.  ######################
+################## De una matriz, de cada lista, sacar su numero MAYOR y su indice.  ######################
 
 Matriz = [[1, 13, 4], [12, 16, 6], [9, 10, 100]]  # Se varian los datos para comprobar el codigo
 print(Matriz)
@@ -99,7 +99,7 @@ print("El numero mayor de la fila 1 de la matriz es:", Max, " y su indice es: ",
 print(" ")
 
 
-########## De una matriz, de cada lista, sacar su numero MENOR y su indice.  ######################
+################### De una matriz, de cada lista, sacar su numero MENOR y su indice.  ######################
 
 Matriz = [[1, 13, 4], [1, 1, 1], [9, 10, 100]]  # Se varian los datos para comprobar el codigo
 print(Matriz)
@@ -110,7 +110,7 @@ print("El numero menor de la fila 1 de la matriz es:", Min, " y su indice es: ",
 
 print(" ")
 
-#------------------- OTRA OPCION ----------------------------
+#------------------------------------ OTRA OPCION -----------------------------------------------
 
 numMenor = 0
 
@@ -119,10 +119,7 @@ for i in Matriz[0]:
         numMenor = i
 print(numMenor)
 
-
-
-
-############   Funcion para obtener el/los indices de valores indicados  #######
+############   Funcion para obtener el/los indices de valores indicados  ###########
 
 def iterated_index(lista, valor):
     iterated_index_list = []
